@@ -16,5 +16,14 @@ namespace WinCalculator
         {
             InitializeComponent();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            int a, b, c;
+            a = int.Parse(firstNumTb.Text);
+            b = int.Parse(secondNumTb.Text);
+            c = a + b;
+            resultLbl.Text = "= " + c;
+        }
     }
 }

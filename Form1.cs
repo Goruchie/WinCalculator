@@ -12,6 +12,7 @@ namespace WinCalculator
 {
     public partial class Form1 : Form
     {
+        string result;
         public Form1()
         {
             InitializeComponent();
@@ -25,8 +26,29 @@ namespace WinCalculator
             {
                 a = int.Parse(firstNumTb.Text);
                 b = int.Parse(secondNumTb.Text);
-                c = a / b;
-                resultLbl.Text = "= " + c;
+
+                switch (result)
+                {
+                    case "+":
+                        c = a + b;
+                        resultLbl.Text = "" + c;
+                        break;
+                    case "-":
+                        c = a - b;
+                        resultLbl.Text = "" + c;
+                        break;
+                    case "*":
+                        c = a * b;
+                        resultLbl.Text = "" + c;
+                        break;
+                    case "/":
+                        c = a / b;
+                        resultLbl.Text = "" + c;
+                        break;
+                    default:
+                        MessageBox.Show("Please, select an operation to calculate...");
+                        break;
+                }         
             }
             catch (FormatException ex)
             {
@@ -39,6 +61,38 @@ namespace WinCalculator
             catch (Exception ex)
             {
                 MessageBox.Show("An error has occurred, please report it to the provider...");
+            }
+        }
+
+        private void rBtnPlus_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rBtnPlus.Checked)
+            {
+                result = "+";
+            }
+        }
+
+        private void rBtnMinus_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rBtnMinus.Checked)
+            {
+                result = "-";
+            }
+        }
+
+        private void rBtnMultiply_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rBtnMultiply.Checked)
+            {
+                result = "*";
+            }
+        }
+
+        private void rBtnDivide_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rBtnDivide.Checked)
+            {
+                result = "/";
             }
         }
     }
